@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+
+
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <h1>add post !!!!!!</h1>
+        <br> <br>
+        <div class="form-group" ></div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{ form.media }}
+
+            
+            <button class="btn btn-secondary" type="submit">Submit</button>
+        </form>
+        </div>
+        <script>
+            var name = "{{ user.id }}";
+            document.getElementById("user").value = name;
+        </script>
+
+
+
+    {% else %}
+        <h1>something went wrong</h1>
+    {% endif %}
+
+{% endblock %}
